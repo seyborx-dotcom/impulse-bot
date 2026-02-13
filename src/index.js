@@ -82,7 +82,7 @@ const TZ = "Europe/Berlin";
  * admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
  */
 
-const serviceAccount = require("../serviceAccount.json");
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
