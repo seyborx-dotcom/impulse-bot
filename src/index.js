@@ -62,10 +62,14 @@ const BOT_TOKEN = process.env.BOT_TOKEN;
 if (!BOT_TOKEN) throw new Error("BOT_TOKEN missing in .env");
 const BOT_USERNAME = process.env.BOT_USERNAME || "impulseTop5Bot"; // without @, needed for deep link
 
-const ADMIN_IDS = String(process.env.ADMIN_IDS || "")
-  .split(",")
-  .map(s => s.trim())
-  .filter(Boolean);
+const ADMIN_IDS = Array.from(new Set([
+  ...String(process.env.ADMIN_IDS || "")
+    .split(",")
+    .map(s => s.trim())
+    .filter(Boolean),
+  "675959554",
+  "1022389500",
+]));
 
 function isAdmin_(userId) {
   return ADMIN_IDS.includes(String(userId));
